@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Webview_Testing
-//
-//  Created by Rodrigo Miyashiro on 16/08/23.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
