@@ -65,8 +65,8 @@ extension WebViewViewController {
         let webViewConfig = WKWebViewConfiguration()
         webViewConfig.allowsInlineMediaPlayback = true
         
-        self.webview = WKWebView(frame: self.view.frame, configuration: webViewConfig)
-//        self.webview.frame = self.view.frame
+        self.webview = WKWebView()//(frame: self.view.frame, configuration: webViewConfig)
+        self.webview.frame = self.view.frame
         self.webview.uiDelegate = self
         self.webview.navigationDelegate = self
         
@@ -136,7 +136,7 @@ extension WebViewViewController: WKUIDelegate {
 /// Methods for accepting or rejecting navigation changes, and for tracking the progress of navigation requests.
 extension WebViewViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
-        debugPrint("-->> Did Fail Provisional: \(error.localizedDescription)")
+        debugPrint("-->> Did Fail Provisional: \(error._code) | \(error.localizedDescription)")
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
