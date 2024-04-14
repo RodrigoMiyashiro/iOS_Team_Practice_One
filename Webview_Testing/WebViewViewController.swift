@@ -65,10 +65,18 @@ extension WebViewViewController {
         let webViewConfig = WKWebViewConfiguration()
         webViewConfig.allowsInlineMediaPlayback = true
         
-        self.webview = WKWebView()//(frame: self.view.frame, configuration: webViewConfig)
-        self.webview.frame = self.view.frame
+        let preferences = WKWebpagePreferences()
+        preferences.preferredContentMode = .mobile
+        webViewConfig.defaultWebpagePreferences = preferences
+        webViewConfig.dataDetectorTypes = [.all]
+        
+        self.webview = WKWebView(frame: self.view.frame, configuration: webViewConfig)
+//        self.webview.frame = self.view.frame
         self.webview.uiDelegate = self
         self.webview.navigationDelegate = self
+        
+        
+        self.webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
         
         self.webview.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
 //        self.webview.addObserver(self, forKeyPath: #keyPath(WKWebView.url), options: .new, context: nil)
